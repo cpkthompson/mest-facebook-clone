@@ -7,10 +7,7 @@ class SignIn:
         self.email = email
         self.password = password
 
-    def invalid_password(self):
 
-        if self.email != SignUp(self.email):
-            return "invalid password"
 
 
 

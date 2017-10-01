@@ -35,11 +35,29 @@ class SignUp:
         self.birthday = input("Enter your birthday: ")
         self.gender = input("Enter your gender: ")
 
+
+class SignIn:
+
+    def __init__(self, email ='', password =''):
+
+        self.email = input("Enter your email: ")
+        self.password = input("Enter your password: ")
+
+    def verify_sign(self, user):
+
+        if self.email == SignUp(user.email):
+            print("Successful")
+
+        else:
+            self.email != user.email
+            print("invalid email")
+
+
 def main():
 
     while True:
         new_user = Users()
-        register = int(input('Type 1 to signup as a new user: '))
+        register = int(input('Type 1 to sign up as a new user, 2 to sign in: '))
 
         if register == 1:
             user = SignUp()
@@ -47,7 +65,9 @@ def main():
             new_user.create_csv(user)
 
         elif register == 2:
-            print("incorrect input")
+            user = SignIn()
+            new_user.verify_sign(user)
+
         else:
             print("End here")
             break
