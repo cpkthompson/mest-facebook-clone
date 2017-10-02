@@ -18,7 +18,9 @@ while True:
         print(view)
         new_user.save_to_csv()
 
+
     elif register == 2:
+
         email = input("Enter your email: ")
         password = input("Enter your password: ")
 

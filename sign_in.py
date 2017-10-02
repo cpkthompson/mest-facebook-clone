@@ -1,12 +1,8 @@
-import sign_up
-import user
 import csv
 
 
 class SignIn:
-
     def __init__(self, email, password):
-
         self.email = email
         self.password = password
 
@@ -14,19 +10,18 @@ class SignIn:
 
         #reading the user details in the csv and spliting it to make a list to get index of email
         with open('user.csv', 'r') as csv_file:
-            for user in csv_file:
-                stored_email = user.split(",")[2]
-                # user.split[2] get the index of email in the csv file
+            users = csv.DictReader(csv_file)
 
-                if stored_email == self.email:
-                    return "welcome", self.firstname
+            for user in users:
+                if self.email == user['email'] and self.password == user['password']:
+                    return "Welcome {}".format(user['firstname'])
+
+                elif self.email == user['email'] and self.password != user['password']:
+                    return "incorrect password"
+
+                elif self.email != user['email'] and self.password != user['password']:
+                    return "incorrect password"
+
                 else:
-                    return "wrong email"
-
-
-if __name__ == "__main__":
-    old = SignIn("abc", "wwwww")
-    old.verify_sign_in()
-
-
+                    return "Try again"
 
