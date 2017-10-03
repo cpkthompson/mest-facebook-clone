@@ -1,33 +1,29 @@
 import user
 import sign_in
-#This is for sign up and sign in
 
 
-while True:
-    register = int(input('Type 1 to sign up as a new user, 2 to sign in: '))
+class SignUp():
+    def __init__(self, firstname, lastname, email, password, birthday, gender):
+        self.firstname = firstname
+        self.lastname = lastname
+        self.email = email
+        self.password = password
+        self.birthday = birthday
+        self.gender = gender
+        self.check_email()
 
-    if register == 1:
-        firstname = input("Enter your lastname: ")
-        lastname = input("Enter your lastname: ")
-        email = input("Enter your email: ")
-        password = input("Enter your password: ")
-        birthday = input("Enter your birthday: ")
-        gender = input("Enter your gender: ")
-
-        new_user = user.User(firstname, lastname, email, password, birthday, gender)
-        view = new_user.verify_email()
-        print(view)
+    def create_new_user(self):
+        new_user = user.User(self.firstname, self.lastname, self.email, self.password, self.birthday, self.gender)
         new_user.save_to_csv()
 
-    elif register == 2:
+    def check_email(self):
+        with open('user.csv', 'r') as csv_file:
+            all_users = csv.DictReader(csv_file)
 
-        email = input("Enter your email: ")
-        password = input("Enter your password: ")
+            for user in users:
+                if self.email == user['email']:
+                    print('Sorry this email is already taken')
+                    # run questions
+                else:
+                    self.create_new_user()
 
-        old_user = sign_in.SignIn(email, password)
-        view = old_user.verify_sign_in()
-        print(view)
-
-    else:
-        print("End here")
-        break
