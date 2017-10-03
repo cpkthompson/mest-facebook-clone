@@ -4,7 +4,7 @@ import csv
 class SignIn:
     def __init__(self, email, password):
         self.email = email
-        self.password = password
+        self.__password = password
 
     def verify_sign_in(self):
 
@@ -25,3 +25,7 @@ class SignIn:
                 else:
                     return "Try again"
 
+if __name__ == '__main__':
+    email = input("Enter email: ")
+    password = input("Enter password: ")
+    signin = SignIn(email, password)
