@@ -2,6 +2,7 @@ import user
 import sign_in
 #This is for sign up and sign in
 
+
 while True:
     register = int(input('Type 1 to sign up as a new user, 2 to sign in: '))
 
@@ -18,7 +19,6 @@ while True:
         print(view)
         new_user.save_to_csv()
 
-
     elif register == 2:
 
         email = input("Enter your email: ")
@@ -27,8 +27,6 @@ while True:
         old_user = sign_in.SignIn(email, password)
         view = old_user.verify_sign_in()
         print(view)
-
-
 
     else:
         print("End here")
